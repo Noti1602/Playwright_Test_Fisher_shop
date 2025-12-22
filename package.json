@@ -1,0 +1,18 @@
+{
+  "name": "Playwright_Test_Fisher_shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test tests/fisher-shop-test-happy-path.spec.js",
+    "test-ui": "playwright test tests/fisher-shop-test-happy-path.spec.js --ui",
+    "report": "npx playwright show-report"
+  },
+  "private": true,
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.3",
+    "allure-commandline": "^2.36.0",
+    "allure-playwright": "^3.4.3"
+  }
+}
