@@ -1,4 +1,5 @@
 import { BasePage } from './BasePage';
+import { CatalogueCategory } from '../data/CatalogueCategory';
 
 export class HomePage extends BasePage{
     constructor(page) {
@@ -28,22 +29,9 @@ export class HomePage extends BasePage{
         await this.verifyElementsCount(this.leftHandMenuItem, 11);
     }
 
-    async buyProductFromSpinningsCatalogue() {
-        await this.page.goto('/kupit/spinningi');
-        await this.productItemName.first().click();
-        await this.buyBtn.click();
-        await this.continuePurchaseBtn.click();
-    }
 
-    async buyProductFromWinterFishingReels() {
-        await this.page.goto('/katushki/winter-spools');
-        await this.productItemName.first().click();
-        await this.buyBtn.click();
-        await this.continuePurchaseBtn.click();
-    }
-
-    async buyProductFromFishingCords() {
-        await this.page.goto('/shnury-leska/shnur');
+    async buyProductFromCatalogueCategory(category) {
+        await this.page.goto(category);
         await this.productItemName.first().click();
         await this.buyBtn.click();
         await this.continuePurchaseBtn.click();

@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npx playwright test tests/fisher-shop-test-happy-path.spec.js",
     "test-ui": "playwright test tests/fisher-shop-test-happy-path.spec.js --ui",
-    "report": "npx playwright show-report"
+    "report": "npx playwright show-report",
+    "allure-report": "npx allure serve allure-results"
   },
   "private": true,
   "devDependencies": {

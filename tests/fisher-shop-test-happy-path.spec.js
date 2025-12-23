@@ -4,6 +4,8 @@ import { RegisterPage } from '../pages/RegisterPage';
 import { ProfilePage } from '../pages/ProfilePage';
 import { CartModal } from '../pages/components/CartModal';
 import { ContactsPage } from '../pages/ContactsPage';
+import { CatalogueCategory } from '../data/CatalogueCategory';
+import { PageTitle } from '../data/PageTitle';
 
 
 
@@ -15,9 +17,9 @@ test.describe('Fisher shop happy path test', () => {
         const cartModal = new CartModal(page);
         const contactsPage = new ContactsPage(page);
 
-        // Open Home Page and click Registration link
+        // // Open Home Page and click Registration link
         await homePage.navigateHomePage();
-        await homePage.verifyPageTitle('Рибальські снасті | Товари для рибальства інтернет магазин у Києві');
+        await homePage.verifyPageTitle(PageTitle.HomePageTitle);
         await homePage.openRegisterPageViaLink();
 
         // Verify Register Page base elements
@@ -25,18 +27,18 @@ test.describe('Fisher shop happy path test', () => {
 
         // Register new account
         await registerPage.registerNewAccount('testUserName', `test${Date.now()}@mail.com`, 'testPassword');
-        await profilePage.verifyPageTitle('Ваш Профиль');
+        await profilePage.verifyPageTitle(PageTitle.ProfilePageTitle);
         await profilePage.verifyPageURL('/user');
 
         // Navigate Home Page and verify base elements
         await registerPage.navigateHomePage();
-        await homePage.verifyPageTitle('Рибальські снасті | Товари для рибальства інтернет магазин у Києві');
+        await homePage.verifyPageTitle(PageTitle.ProfilePageTitle);
         await homePage.verifyHomePageContentElements();
 
         // Add 3 items into the cart
-        await homePage.buyProductFromSpinningsCatalogue();
-        await homePage.buyProductFromWinterFishingReels();
-        await homePage.buyProductFromFishingCords();
+        await homePage.buyProductFromCatalogueCategory(CatalogueCategory.SPINNING);
+        await homePage.buyProductFromCatalogueCategory(CatalogueCategory.WINTER_REELS);
+        await homePage.buyProductFromCatalogueCategory(CatalogueCategory.FISHING_CORDS);
         await homePage.openCart();
 
         // Open Cart and make screenshot
@@ -46,7 +48,7 @@ test.describe('Fisher shop happy path test', () => {
 
         // Open Contacts page and scroll it to the bottom
         await homePage.navigateToContactsPageViaLink();
-        await contactsPage.verifyPageTitle('Контакты');
+        await contactsPage.verifyPageTitle(PageTitle.ContactsPageTitle);
         await contactsPage.scrollToBottom();
 
 })
