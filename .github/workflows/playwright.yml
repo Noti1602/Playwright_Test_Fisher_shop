@@ -2,7 +2,7 @@ name: Playwright Tests with Allure
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, main ]
 
 permissions:
   pages: write
