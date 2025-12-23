@@ -1,5 +1,5 @@
 import { BasePage } from './BasePage';
-import { randomString } from '../utils/randomString';
+import { randomString } from '../utils/RandomString';
 import { expect } from '@playwright/test';
 
 export class RegisterPage extends BasePage{
