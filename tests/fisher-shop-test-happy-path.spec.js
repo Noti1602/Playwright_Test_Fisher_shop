@@ -26,13 +26,13 @@ test.describe('Fisher shop happy path test', () => {
         await registerPage.verifyRegisterPageContentElements();
 
         // Register new account
-        await registerPage.registerNewAccount('testUserName', `test${Date.now()}@mail.com`, 'testPassword');
+        await registerPage.registerNewAccount();
         await profilePage.verifyPageTitle(PageTitle.ProfilePageTitle);
         await profilePage.verifyPageURL('/user');
 
         // Navigate Home Page and verify base elements
         await registerPage.navigateHomePage();
-        await homePage.verifyPageTitle(PageTitle.ProfilePageTitle);
+        await homePage.verifyPageTitle(PageTitle.HomePageTitle);
         await homePage.verifyHomePageContentElements();
 
         // Add 3 items into the cart
@@ -43,7 +43,7 @@ test.describe('Fisher shop happy path test', () => {
 
         // Open Cart and make screenshot
         await cartModal.verifyItemsCount(3);
-        await cartModal.takeScreenshot('my-order');
+        await cartModal.takeScreenshot();
         await cartModal.closeCartModal();
 
         // Open Contacts page and scroll it to the bottom

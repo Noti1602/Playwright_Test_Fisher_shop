@@ -1,5 +1,7 @@
 import { expect } from '@playwright/test';
 import {BasePage} from "../BasePage";
+import {generateScreenshotName} from "../../utils/FileNameUtils";
+import { FileNameUtils } from "../../utils/FileNameUtils";
 
 export class CartModal extends BasePage{
     constructor(page) {
@@ -16,13 +18,9 @@ export class CartModal extends BasePage{
         this.modalCartProduct = this.modal.locator('a.a_aj_cart');
     }
 
-    async clickContinuePurchaseBtn() {
-        await this.modalContinueBtn().first().click();
-    }
-
-    async takeScreenshot(fileName) {
+    async takeScreenshot() {
         await this.modal.waitFor({ state: 'visible' });
-
+        const fileName = generateScreenshotName('cart');
         await this.modal.screenshot({
             path: `screenshots/${fileName}.png`,
         });

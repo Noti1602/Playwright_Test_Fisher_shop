@@ -1,4 +1,5 @@
 import { BasePage } from './BasePage';
+import { randomString } from '../utils/randomString';
 import { expect } from '@playwright/test';
 
 export class RegisterPage extends BasePage{
@@ -11,7 +12,6 @@ export class RegisterPage extends BasePage{
         this.emailInput = this.page.locator('#email');
         this.passwordInput = this.page.locator('#password');
         this.registerBtn = this.page.locator('#reg');
-
     }
 
     async navigateHomePage() {
@@ -26,7 +26,10 @@ export class RegisterPage extends BasePage{
         await this.isEnabled(this.registerBtn);
     }
 
-    async registerNewAccount(name, email, password) {
+    async registerNewAccount() {
+        const name = `user_${randomString(6)}`;
+        const email = `test_${randomString(8)}@mail.com`;
+        const password = randomString(12);
         await this.nameInput.fill(name);
         await this.nameInput.click();
         await this.emailInput.fill(email);
@@ -35,8 +38,6 @@ export class RegisterPage extends BasePage{
         await this.passwordInput.click();
         await expect(this.registerBtn).toBeEnabled();
         await this.registerBtn.click();
-        // await this.page.waitForURL('**/user');
     }
-
 
 }

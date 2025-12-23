@@ -1,5 +1,4 @@
 import { BasePage } from './BasePage';
-import { CatalogueCategory } from '../data/CatalogueCategory';
 
 export class HomePage extends BasePage{
     constructor(page) {
