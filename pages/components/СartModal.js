@@ -1,7 +1,6 @@
 import { expect } from '@playwright/test';
 import {BasePage} from "../BasePage";
-import {generateScreenshotName} from "../../utils/FileNameUtils";
-import { FileNameUtils } from "../../utils/FileNameUtils";
+import { generateScreenshotName } from "../../utils/FileNameUtils";
 
 export class CartModal extends BasePage{
     constructor(page) {

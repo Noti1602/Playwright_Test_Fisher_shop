@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 import { HomePage } from '../pages/HomePage';
 import { RegisterPage } from '../pages/RegisterPage';
 import { ProfilePage } from '../pages/ProfilePage';
-import { CartModal } from '../pages/components/CartModal';
+import { CartModal } from '../pages/components/СartModal';
 import { ContactsPage } from '../pages/ContactsPage';
 import { CatalogueCategory } from '../data/CatalogueCategory';
 import { PageTitle } from '../data/PageTitle';
